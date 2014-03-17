@@ -1,4 +1,4 @@
-/**                                                                                                                                                                                                                                          
+/**
  * Definition for binary tree
  * struct TreeNode {
  *     int val;
@@ -10,11 +10,17 @@
 class Solution {
   public:
     int sumNumbers(TreeNode *root) {
+      int ret = 0;
       if (NULL == root) return 0;
-      int l_val = sumNumbers(root->left);
-      int r_val = sumNumbers(root->right);
-      int val = l_val + r_val;
-      if (val) return root->val * 10 + val;
-      else return root->val;
-    }   
+      if (NULL == root->left && NULL == root->right) return root->val;
+      if (NULL != root->left) {
+        root->left->val += root->val * 10;
+        ret += sumNumbers(root->left);
+      }
+      if (NULL != root->right) {
+        root->right->val += root->val * 10;
+        ret += sumNumbers(root->right);
+      }                                                                                                                                                                                                                                      
+      return ret;
+    }
 };
