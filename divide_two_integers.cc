@@ -1,3 +1,7 @@
+// O(lgN)
+// store divisor divisor+divisor divisor+divisor+divisor  ... 65536
+// compare dividend and 65536 65536+65536 65536+65536+65536
+ 
 class Solution {
   public:
     int divide(int dividend, int divisor) {
