@@ -12,7 +12,8 @@ class Solution {
     int sumNumbers(TreeNode *root) {
       int ret = 0;
       if (NULL == root) return 0;
-      if (NULL == root->left && NULL == root->right) return root->val;
+
+      if (NULL == root->left && NULL == root->right) return root->val;  // leaf node
       if (NULL != root->left) {
         root->left->val += root->val * 10;
         ret += sumNumbers(root->left);
