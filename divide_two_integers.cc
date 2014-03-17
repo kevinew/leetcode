@@ -1,14 +1,14 @@
 // O(lgN)
-// store divisor divisor+divisor divisor+divisor+divisor  ... 65536
+// Analyse: store divisor divisor+divisor divisor+divisor+divisor  ... 65536
 // compare dividend and 65536 65536+65536 65536+65536+65536
 
-// So we can conclude a Method:  
-// Prestore 
+// Conclude a Method:  
+// Prestore long a[n]
 // divisor * 2^0
 // divisor * 2^1
 // divisor * 2^2
 // divisor * 2^4
-// ...
+// ...  just more than the biggest int(2147483647).
  
 class Solution {
   public:
