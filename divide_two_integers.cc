@@ -9,12 +9,21 @@
 // divisor * 2^2
 // divisor * 2^4
 // ...  just more than the biggest int(2147483647).
- 
-class Solution {
-  public:
-    int divide(int dividend, int divisor) {
-      int ret;
-      int flag1 = 1, flag2 = 1;
+
+// Copyright 2014 kevinew@leetcode Inc. All Rights Reserved.
+
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+class Solution {                                                                 
+  public:                                                                        
+    int divide(long long dividend, long long divisor) {                                      
+      int ret, i;                                                                   
+      int flag1 = 1, flag2 = 1;                                                  
 
       if (dividend < 0) {
         flag1 = -1;
@@ -24,13 +33,39 @@ class Solution {
         flag2 = -1;
         divisor = 0 - divisor;
       }
-      if (dividend < divisor) return 0;
 
-      if (divisor == 1) ret = dividend;
-      else {
-        ret = 1 + divide(dividend - divisor, divisor);                                                                                                                                                                                       
+      vector<long long> a;                                                               
+      a.reserve(33);                                                                
+      a[0] = divisor;                                                               
+      for (i = 1; ; ++i) {                                                      
+        a[i] = a[i - 1] + a[i - 1];                                                 
+        if (a[i] > dividend) break;                                                 
+      }                                                                             
+      --i;                                                                          
+
+      int result = 0;                                                               
+      bool first = false;                                                           
+      while (i >= 0) {                                                              
+        result = result << 1;                                                       
+        if (dividend >= a[i]) {                                                     
+          result += 1;                                                              
+          dividend -= a[i];                                                         
+        }         
+        --i;
       }
-      if (flag1 + flag2 == 0) return 0 - ret;
-      else return ret;
+
+      if (flag1 + flag2 == 0) return -result;
+      else return result;                                                                
     }
-};
+};  
+
+int main(int argc, char **argv) {
+
+  Solution s;
+
+  // When I change the args of divide from int to long long,
+  // then passed this case.
+  cout << s.divide(-1010369383, -2147483648) << endl;
+
+  return 0;
+}
