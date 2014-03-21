@@ -38,7 +38,7 @@ class Solution {
       a.reserve(33);                                                                
       a[0] = divisor;                                                               
       for (i = 1; ; ++i) {                                                      
-        a[i] = a[i - 1] + a[i - 1];                                                 
+        a[i] = a[i - 1] << 1;                                                 
         if (a[i] > dividend) break;                                                 
       }                                                                             
       --i;                                                                          
@@ -46,7 +46,7 @@ class Solution {
       int result = 0;                                                               
       bool first = false;                                                           
       while (i >= 0) {                                                              
-        result = result << 1;                                                       
+        result <<= 1;                                                       
         if (dividend >= a[i]) {                                                     
           result += 1;                                                              
           dividend -= a[i];                                                         
