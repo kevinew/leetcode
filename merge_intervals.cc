@@ -41,9 +41,11 @@ class Solution {
           a.start = x.start;
           a.end = x.end;
           res.push_back(a);
-          if (i < intervals.size() - 1) x = intervals[i+1];
+          x = intervals[i];
         }
       }
+      res.push_back(x);
+      
       return res;
     }
 };
