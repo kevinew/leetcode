@@ -37,10 +37,7 @@ class Solution {
         if (intervals[i].start <= x.end) {
           x.end = max(x.end, intervals[i].end);
         } else {
-          Interval a;
-          a.start = x.start;
-          a.end = x.end;
-          res.push_back(a);
+          res.push_back(x);
           x = intervals[i];
         }
       }
