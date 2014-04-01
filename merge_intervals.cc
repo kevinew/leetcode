@@ -1,3 +1,6 @@
+// 1. sort by start.
+// 2. from left to right one by one, update the end every time when there is overlap. add to result set when there is no overlap.
+
 /**
  * Definition for an interval.
  * struct Interval {
