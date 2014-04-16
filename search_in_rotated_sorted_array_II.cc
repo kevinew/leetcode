@@ -1,3 +1,27 @@
+// method 1:
+class Solution {
+public:
+    bool search(int A[], int n, int target) {
+        int low, high, mid;
+        int i;
+        
+        for (i = 0; i < n - 1; ++i) {
+            if (A[i] > A[i + 1]) break;
+        }
+        low = i + 1;
+        high = i + n;
+        
+        while (low <= high) {
+            mid = (high - low) / 2 + low;
+            if (A[mid % n] == target) return true;
+            if (A[mid % n] < target) low = mid + 1;
+            else high = mid - 1;
+        }
+        return false;
+    }
+};
+
+// method 2:
 class Solution {
 public:
     bool search(int A[], int n, int target) {
