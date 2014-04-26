@@ -16,6 +16,40 @@ using namespace std;
 #define VS vector<string>
 
 
+// Max sum of sub array - Just use 2 same array to concat.
+// 1 -1 5 6   =>  1 -1 5 6 1 -1 5 6
+
+class Solution {
+  public:
+    int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+      int n = gas.size();
+      vector<int> a;
+
+      for (int i = 0; i < n; ++i) gas[i] -= cost[i];
+      // concat with 2 same array.
+      a.insert(a.end(), gas.begin(), gas.end());
+      a.insert(a.end(), gas.begin(), gas.end());
+
+      int start, count, sum;
+      start = 0;
+      count = 0;
+      sum = 0;
+      for (int i = 0; i < a.size(); ++i) {
+        sum += a[i];
+        count++;
+
+        if (sum < 0) {
+          count = 0;
+          sum = 0;
+          start = i + 1;
+          continue;
+        }
+        if (count == n) return start;
+      }
+      return -1;
+    }
+};
+
 int main(int argc, char **argv) {
 
   Solution s;
