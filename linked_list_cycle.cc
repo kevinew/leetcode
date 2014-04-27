@@ -7,18 +7,18 @@
  * };
  */
 class Solution {
-public:
+  public:
     bool hasCycle(ListNode *head) {
-        if (NULL == head) return false;
-        ListNode *p, *q;
-        p = head;
-        q = head;
-        while (p && q) {
-            p = p -> next;
-            q = q -> next;
-            if (NULL == q) return false;
-            q = q -> next;
-            if (p && q && p == q) return true;
-        }
+      if (NULL == head) return false;
+      ListNode *slow, *fast;
+      slow = head;
+      fast = head;
+      while (slow && fast) {
+        slow = slow -> next;
+        fast = fast -> next;
+        if (NULL == fast) return false;
+        fast = fast -> next;
+        if (slow && fast && slow == fast) return true;
+      }
     }
 };
