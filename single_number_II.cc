@@ -20,8 +20,6 @@ class Solution {
 
       CompressBitBucket();
 
-      // for (int i = 0; i < 10; ++i) cout << bit_bucket_[i] << endl;
-
       return GetResult();
     }
 
@@ -45,7 +43,7 @@ class Solution {
       }
       while (u_number) {
         bit_bucket_[i++] += u_number % 2;
-        u_number /= 2;
+        u_number >>= 1;
       }
     }
 
@@ -57,21 +55,29 @@ class Solution {
     int GetResult() {
       long long result = 0;
       for (int i = 100 - 1; i >= 0; --i) {
-        result = result*2 + bit_bucket_[i];
+        result = (result<<1) + bit_bucket_[i];
       }
-      // cout << result << endl;
       if (minus_flag_ > 0) result *= -1;
       return result;
     }
 };
 
 
-int main(int argc, char **argv) {
-
+void test1() {
   Solution s;
   int a[] = {2, 2, 3, 2};
-
   cout << "\nresult = " << s.singleNumber(a, 4) << endl;
+}
+
+void test2() {
+  Solution s;
+  int a[] = {1};
+  cout << "\nresult = " << s.singleNumber(a, 1) << endl;
+}
+
+int main(int argc, char **argv) {
+
+  test2();
 
   return 0;
 }

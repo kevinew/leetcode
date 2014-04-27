@@ -1,3 +1,5 @@
 
 
 1. vector<int> a(5, 6);  // Init 5 elements with each value 6. (6 6 6 6 6)
+2. 加减运算符的优先级比移位运算符多优先级要高
+3. 
