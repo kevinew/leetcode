@@ -1,12 +1,10 @@
 // Copyright 2014 kevinew.1221@gmail.com Inc. All Rights Reserved.
 
-
 #include <algorithm>
 #include <cmath>
 #include <string>
 #include <vector>
 #include <iostream>
-
 using namespace std;
 
 #define VI vector<int>
